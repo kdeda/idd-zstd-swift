@@ -18,7 +18,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(name: "ZSTDLib", url: "https://github.com/kdeda/zstd-lib.git", from: "1.0.4"),
+        .package(name: "ZSTDLib", url: "https://github.com/kdeda/zstd-lib_dis.git", from: "1.0.7"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
