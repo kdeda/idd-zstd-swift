@@ -1,0 +1,4 @@
+module ZSTDLib {
+    header "StreamHelpers.h"
+    header "zdict.h"
+}

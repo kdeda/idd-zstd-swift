@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "ZSTDSwift",
+    name: "idd-zstd-swift",
     platforms: [
         // .iOS(.v13),
         .macOS(.v10_12)
@@ -13,19 +13,26 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "ZSTDSwift",
-            targets: ["ZSTDSwift"]),
+            targets: ["ZSTDLib", "ZSTDSwift"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-        .package(name: "ZSTDLib", url: "https://github.com/kdeda/zstd-lib.git", from: "1.0.7"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
+            name: "ZSTDLib",
+            dependencies: [],
+            path: "Sources/ZSTDLib",
+            exclude: ["../ZSTDLib/zstdlib/LICENSE"],
+            cxxSettings: [
+                .headerSearchPath("../ZSTDLib/"),
+            ]
+        ),
+        .target(
             name: "ZSTDSwift",
-            dependencies: ["ZSTDLib"]
+            dependencies: ["ZSTDLib"],
+            path: "Sources/ZSTDSwift"
         ),
         .testTarget(
             name: "ZSTDSwiftTests",
